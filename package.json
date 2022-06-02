@@ -1,15 +1,19 @@
 {
-  "name": "woqi-taro-cli",
+  "name": "windi-taro-cli",
   "version": "0.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:wa143825/woqi-taro-cli.git"
+  },
   "bin": "bin/enter",
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.27.2",
     "chalk": "^4.1.2",
