@@ -1,0 +1,49 @@
+#! /usr/bin/env node
+
+/*
+ * @Author: Re_Vive
+ * @LastEditTime: 2022-06-01 14:02:20
+ * @Description: 头部注释配置模板
+ */
+const program = require('commander')
+const chalk = require('chalk')
+const figlet = require('figlet')
+
+// const { basic } = require('./basic')
+const { create } = require('./create')
+
+program
+  .command('create <name>')
+  .description('create a new project')
+  .option('-f, --force', 'overwrite target directory if it exist')
+  .action((name, option) => {
+    console.log('项目名称为' + chalk.green(name))
+    create(name, option)
+  })
+
+program
+  .command('update')
+  .description('update this template')
+  .action((name, option) => {
+    console.log('updating')
+  })
+
+program.version(`${require('../package.json').version}`).usage('<command> [option]')
+
+program.on('--help', () => {
+  // 使用 figlet 绘制 Logo
+  console.log(
+    '\r\n' +
+      figlet.textSync('WOQI', {
+        font: 'soft',
+        horizontalLayout: 'default',
+        verticalLayout: 'default',
+        width: 80,
+        whitespaceBreak: true,
+      }),
+  )
+  // 新增说明信息
+  console.log(`\r\nRun ${chalk.cyan(`woqi-taro-cli <command> --help`)} show details\r\n`)
+})
+
+program.parse()
