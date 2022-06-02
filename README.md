@@ -1,4 +1,4 @@
-## woqi-taro-cli 脚手架
+## windi-taro-cli 脚手架
 
 - 版本 0.1
 - 功能: 下载一个 taro + react 的模板，方便小程序开发
