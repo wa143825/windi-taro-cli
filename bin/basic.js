@@ -30,7 +30,7 @@ const basic = async (name, targetAir) => {
       choices: [
         {
           name: 'npm',
-          value: 'npm',
+          value: 'npm i --legacy-peer-deps ',
         },
         {
           name: 'yarn',
@@ -38,11 +38,26 @@ const basic = async (name, targetAir) => {
         },
       ],
     },
+    {
+      name: 'origin',
+      type: 'list',
+      message: '使用github还是gitee下载模板',
+      choices: [
+        {
+          name: 'github',
+          value: 'github',
+        },
+        {
+          name: 'gitee',
+          value: 'gitee',
+        },
+      ],
+    },
   ])
 
-  const { author, desc, appid, action } = prompt
+  const { author, desc, appid, action, origin } = prompt
 
-  const c = new Creator(name, targetAir, author, desc, appid, action)
+  const c = new Creator(name, targetAir, author, desc, appid, action, origin)
 
   c.create()
 }

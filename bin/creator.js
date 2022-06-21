@@ -24,13 +24,14 @@ function sleep(n) {
 }
 
 class Creator {
-  constructor(name, target, author, desc, appid, action) {
+  constructor(name, target, author, desc, appid, action, origin) {
     this.name = name
     this.target = target
     this.author = author
     this.desc = desc
     this.appid = appid
     this.action = action
+    this.origin = origin
 
     this.downloadGitRepo = util.promisify(downloadGitRepo)
   }
@@ -48,7 +49,11 @@ class Creator {
   async download() {
     const downMsg = ora('正在下载模板，请稍后。。。')
     downMsg.start()
-    const downErr = await this.downloadGitRepo('wa143825/taro-template', this.target)
+    let originUrl = {
+      github: 'wa143825/taro-template',
+      gitee: 'direct:https://gitee.com/wa143825/taro-template.git',
+    }
+    const downErr = await this.downloadGitRepo(originUrl[this.origin], this.target, { clone: true })
     if (!downErr) {
       downMsg.succeed('模板创建成功')
       let pack = path.join(this.target, 'package.json')
